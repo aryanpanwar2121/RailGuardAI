@@ -32,3 +32,45 @@ AI-powered Railway Crowd Monitoring System
 - Abandoned Luggage Detection
 - Face Recognition
 - Dashboard and Analytics
+
+# RailGuard AI
+
+AI-Powered CCTV Analytics System for Railway Crowd Management and Safety Monitoring.
+
+## Features Implemented
+
+- Real-Time Person Detection
+- Crowd Counting
+- High Crowd Density Alert
+- Track Intrusion Detection
+- Automatic Evidence Screenshot Capture
+- Timestamp Logging
+
+## Tech Stack
+
+- Python
+- OpenCV
+- YOLOv8
+- Computer Vision
+
+## Project Structure
+
+RailGuardAI/
+│
+├── src/
+│ ├── person_detection.py
+│ └── track_intrusion.py
+│
+├── videos/
+├── outputs/
+├── screenshots/
+├── requirements.txt
+└── README.md
+
+## Future Scope
+
+- Person Tracking (ByteTrack)
+- Unattended Baggage Detection
+- Web Dashboard
+- Database Logging
+- Railway Safety Analytics
