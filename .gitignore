@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Outputs
+outputs/*.png
+
+# VS Code
+.vscode/
+
+# System files
+.DS_Store
