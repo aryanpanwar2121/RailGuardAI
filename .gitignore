@@ -1,9 +1,6 @@
-# Python
-__pycache__/
-*.pyc
-
 # Outputs
 outputs/*.png
+outputs/*.txt
 
 # VS Code
 .vscode/
