@@ -84,3 +84,23 @@ Features Added:
 
 GitHub Commit:
 "Implemented multi-object person tracking with unique IDs"
+Day 5 Completed ✅
+
+Features Added:
+- Baggage Detection
+- Handbag Detection
+- Multi-Bag Monitoring
+- YOLOv8 Object Detection
+# Videos
+videos/*.mp4
+
+# Outputs
+outputs/*.png
+outputs/*.txt
+Day 6 Phase 1 Completed ✅
+
+Features Added:
+- Person Detection
+- Baggage Detection
+- Real-time Bag Monitoring
+- Multi-object Surveillance
