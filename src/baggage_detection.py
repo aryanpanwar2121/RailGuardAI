@@ -2,6 +2,24 @@ from ultralytics import YOLO
 import cv2
 import math
 import time
+import os
+from datetime import datetime
+# ==========================
+# Output Folder
+# ==========================
+
+os.makedirs(
+    "../outputs",
+    exist_ok=True
+)
+
+# ==========================
+# Alert Control
+# ==========================
+
+last_alert_time = 0
+
+alert_cooldown = 10
 
 # ==========================
 # Load YOLO Model
@@ -12,6 +30,46 @@ model = YOLO("yolov8n.pt")
 # ==========================
 # Load Video
 # ==========================
+# ==========================
+# Save Incident Screenshot
+# ==========================
+
+def save_incident(frame):
+
+    timestamp = datetime.now().strftime(
+        "%Y%m%d_%H%M%S"
+    )
+
+    filename = (
+        f"../outputs/incident_{timestamp}.png"
+    )
+
+    cv2.imwrite(
+        filename,
+        frame
+    )
+
+    return filename
+
+
+# ==========================
+# Incident Logging
+# ==========================
+
+def log_incident(message):
+
+    timestamp = datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    with open(
+        "../outputs/incident_log.txt",
+        "a"
+    ) as file:
+
+        file.write(
+            f"[{timestamp}] {message}\n"
+        )
 
 video = cv2.VideoCapture("../videos/baggage.mp4")
 
@@ -267,10 +325,30 @@ while True:
     )
 
     # ==========================
+     # ==========================
     # Alert
     # ==========================
 
     if unattended_bag:
+
+        current_time = time.time()
+
+        if (
+            current_time -
+            last_alert_time
+            >
+            alert_cooldown
+        ):
+
+            image_path = save_incident(
+                annotated_frame
+            )
+
+            log_incident(
+                f"UNATTENDED BAG ALERT | {image_path}"
+            )
+
+            last_alert_time = current_time
 
         cv2.putText(
             annotated_frame,
